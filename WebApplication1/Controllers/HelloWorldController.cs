@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -15,7 +16,18 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return Ok("welcome");
+            var book = new Books() {
+                SeriesTitle = "THe Amazing Spider-Man",
+                IssueNumber = 700,
+                DescriptionHtml = "<p>Description demo issue</p>",
+                Artists = new Artist[]
+                {
+                    new Artist(){Name="a",Role="a1"},
+                    new Artist(){Name="b",Role="b1"},
+                    new Artist(){Name="c",Role="c1"},
+                }
+            };
+            return Ok(book);
         }
 
         // 

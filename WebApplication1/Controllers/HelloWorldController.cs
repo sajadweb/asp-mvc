@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApplication1.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]/[action]")]
+    [Route("/[action]")]
     public class HelloWorldController : Controller
     {
         public int Id { get; set; }
@@ -21,10 +21,16 @@ namespace WebApplication1.Controllers
         // 
         // GET: Does not use the name of the action whene that route without [actions]
         // GET: /api/HelloWorld/1
-        [HttpGet("{id}")]
-        public IActionResult Welcome(int id)
+        [HttpGet("{name}")]
+        public IActionResult Welcome(string name)
         {
-            return Ok("Welcome " + id);
+            return Redirect("/Goodby/"+ name);
+        }
+
+        [HttpGet("{name}")]
+        public IActionResult Goodby(string name)
+        {
+            return Content("goodby " + name);
         }
     }
 }

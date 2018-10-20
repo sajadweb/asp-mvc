@@ -11,7 +11,7 @@ namespace WebApplication1.Controllers
     [Route("/[action]")]
     public class HelloWorldController : Controller
     {
-        public int Id { get; set; }
+        
 
         [HttpGet]
         public IActionResult Index()
